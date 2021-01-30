@@ -1,0 +1,23 @@
+Ordering Service:
+    Requirements:
+        - addToCart(Item item)
+        post: addToCart {List<Item>}
+        - display items in cart
+        get: getItemsInCart
+        - removeFromCart(Item item)
+        DELETE: removeFromCart {Item}
+        - checkout()
+        POST: checkout {List<Item>} -- (total amount, tax information, other charges) total charges
+        - cancelOrder()
+
+        - wishlist(Item item)
+
+
+        Item{
+            Id, price, other metadata
+        }
+
+        User
+
+
+
