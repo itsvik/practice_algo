@@ -15,6 +15,7 @@ public class DisconnectedGraphs {
 
     private static int findDisconnectedGraphs(String[] arr) {
         int r = arr.length, c = arr[0].length();
+//        Create a matrix of Nodes from given array
         Node[][] g = new Node[r][c];
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
@@ -23,13 +24,17 @@ public class DisconnectedGraphs {
                 NODE_LIST.add(g[i][j]);
             }
         }
-
         constructGraph(r, c, g);
-
         return getDisconnected();
 
     }
 
+    /**
+     * Connect all nodes in g to make a linked graph
+     * @param r rows
+     * @param c columns
+     * @param g matrix graph
+     */
     private static void constructGraph(int r, int c, Node[][] g) {
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
@@ -45,6 +50,13 @@ public class DisconnectedGraphs {
         }
     }
 
+    /**
+     * Traverse all the nodes in g DFS
+     * Remove for each disconnected(when value of nodes are different they are disconnected) graph nodes from NODE_LIST
+     * Keep count of each new graph
+     * Do until there is a node left in NODE_LIST
+     * @return count
+     */
     public static int getDisconnected(){
         Stack<Node> stack = new Stack<>();
         int count = 0;
@@ -54,7 +66,6 @@ public class DisconnectedGraphs {
             count++;
             while (!stack.isEmpty()) {
                 Node t = stack.pop();
-//                t.visited = true;
                 NODE_LIST.remove(t);
                 System.out.print(t.value);
                 for (Node e : t.edges) {
@@ -66,6 +77,7 @@ public class DisconnectedGraphs {
         }
         return count;
     }
+
 
     public static class Node{
         public Character value;
