@@ -1,0 +1,95 @@
+find the list of cinema on the basis of location
+find the list of cinema on the basis of movies
+multiple screen running different movies alongwith times
+timings the movies are played
+
+check availability of seats in cinema
+book a seat in cinema and get ticket
+user should be able to make payment for the ticket booked (ckeckout)
+
+cinema should be able to check the ticket booked by user
+
+Seat can be of mulitple category (normal, balcony, sofa)
+
+
+
+Location:
+id
+lat, long
+area
+city
+state
+country
+
+Movies:
+id
+name
+duration
+cast
+ratings
+decription
+
+Seats:
+id
+type
+row
+coulumn
+screenId (FK) Screen
+
+SeatBooking:
+id
+seatId -> (FK) Seats
+MovieShowId -> (FK) MovieShow
+price
+status (BOOKING/ CONFIRMED)
+TicketId -> (FK) Tickets
+
+
+MoviesPlayingOnScreen(MovieShow):
+id
+ScreenId -> (Screen)
+MovieId  -> (Movies)
+startTIme
+
+
+Screen:
+id
+name
+CinemaHallId -> (FK) cinemaHall
+
+
+CinemaHalls
+id
+name
+locationId -> (FK)location
+
+
+Users:
+id
+name
+phoneNumber
+email
+address
+
+
+Ticket:
+id
+userID -> (FK) User
+Cost
+discount
+taxes
+TotalCost
+
+
+Payment_Transaction:
+id
+ticketId -> (FK) ticket
+PaymentMethod
+MethodTransactionId
+paymentStatus
+
+
+
+
+
+// Needs booking table
